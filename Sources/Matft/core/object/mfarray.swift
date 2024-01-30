@@ -110,12 +110,7 @@ open class MfArray: MfArrayProtocol{
         self.mfdata = MfData(refdata: base.mfdata, offset: offset)
         self.mfstructure = mfstructure//mfstructure will be copied because mfstructure is struct
     }
-    
-    /// Create a VIEW or Copy mfarray from MLShapedArray
-    /// - Parameters:
-    ///    - base: A base MLShapedArray
-    ///    - share: Whether to share memories or not, by default to true
-    @available(macOS 12.0, *)
+
     public init (base: inout MLMultiArray, share: Bool = true){
         precondition([MLMultiArrayDataType.float, MLMultiArrayDataType.double].contains(base.dataType), "Must be float or double in share mode")
         // note that base is not assigned here!
